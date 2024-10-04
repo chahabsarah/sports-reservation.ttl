@@ -1,0 +1,203 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex: <http://example.org/ontologies/sports-reservation#> .
+
+# Classe Utilisateur
+ex:Utilisateur a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "Client"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "Admin"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "Coach"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "Personnel"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "PartenairesEtSponsors"
+    ] .
+
+# Classe installations_sportives
+ex:InstallationsSportives a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "Terrain"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "SalleDeSport"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "Equipement"
+    ] .
+
+# Sous-classes de Terrain
+ex:Terrain a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "Indoor"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "Outdoor"
+    ] .
+
+# Sous-classes de Equipement
+ex:Equipement a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "Sportif"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "Technologique"
+    ] .
+
+# Classe financement
+ex:Financement a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "Paiement"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "Don"
+    ] .
+
+# Sous-classes de Paiement
+ex:Paiement a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "EnLigne"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "Espaces"
+    ] .
+
+# Sous-classes de Don
+ex:Don a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "Monétaire"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "Equipement"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "StockRestauration"
+    ] .
+
+# Classe event_sportif
+ex:EventSportif a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "EventPublic"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "EventPrivé"
+    ] .
+
+# Classe abonnement
+ex:Abonnement a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "Mensuel"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "Annuel"
+    ] .
+
+# Classe tarification
+ex:Tarification a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "Horaire"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "Forfaitaire"
+    ] .
+
+# Classe reservation
+ex:Reservation a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "ReservationInstallation"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "ReservationPersonnel"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "ReservationCoach"
+    ] .
+
+# Classe evaluation
+ex:Evaluation a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "EvalCoach"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "EvalInstallation"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "EvalRestauration"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "EvalLocationEquipement"
+    ] .
+
+# Classe notification
+ex:Notification a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "Email"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "InterneApp"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "SMS"
+    ] .
+
+# Classe serviceAdditionnel
+ex:ServiceAdditionnel a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "Restauration"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "LocationEquipement"
+    ] .
+
+# Classe supportClient
+ex:SupportClient a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "FAQ"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "ChatDirecte"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "Chatbot"
+    ] .
+
+# Classe Historique
+ex:Historique a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "HistoriqueReservation"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "HistoriquePaiement"
+    ] .
+
+# Classe calendrier
+ex:Calendrier a rdfs:Class ;
+    rdfs:subClassOf [
+        rdf:type rdfs:Class ;
+        rdfs:label "CalendrierUser"
+    ], [
+        rdf:type rdfs:Class ;
+        rdfs:label "CalendrierInstallation"
+    ] .
