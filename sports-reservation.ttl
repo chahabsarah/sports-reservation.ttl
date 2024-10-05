@@ -1,203 +1,1071 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix ex: <http://example.org/ontologies/sports-reservation#> .
+<?xml version="1.0"?>
 
-# Classe Utilisateur
-ex:Utilisateur a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "Client"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "Admin"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "Coach"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "Personnel"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "PartenairesEtSponsors"
-    ] .
 
-# Classe installations_sportives
-ex:InstallationsSportives a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "Terrain"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "SalleDeSport"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "Equipement"
-    ] .
+<!DOCTYPE rdf:RDF [
+    <!ENTITY ex "http://example.org/ontology#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY ont "http://www.co-ode.org/ontologies/ont.owl#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
 
-# Sous-classes de Terrain
-ex:Terrain a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "Indoor"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "Outdoor"
-    ] .
 
-# Sous-classes de Equipement
-ex:Equipement a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "Sportif"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "Technologique"
-    ] .
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ex="http://example.org/ontology#"
+     xmlns:ont="http://www.co-ode.org/ontologies/ont.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    
 
-# Classe financement
-ex:Financement a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "Paiement"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "Don"
-    ] .
 
-# Sous-classes de Paiement
-ex:Paiement a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "EnLigne"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "Espaces"
-    ] .
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
 
-# Sous-classes de Don
-ex:Don a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "Monétaire"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "Equipement"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "StockRestauration"
-    ] .
+    
 
-# Classe event_sportif
-ex:EventSportif a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "EventPublic"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "EventPrivé"
-    ] .
 
-# Classe abonnement
-ex:Abonnement a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "Mensuel"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "Annuel"
-    ] .
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Consulter -->
 
-# Classe tarification
-ex:Tarification a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "Horaire"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "Forfaitaire"
-    ] .
+    <ObjectProperty rdf:about="&ont;Consulter">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/calendrier"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/historique"/>
+    </ObjectProperty>
+    
 
-# Classe reservation
-ex:Reservation a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "ReservationInstallation"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "ReservationPersonnel"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "ReservationCoach"
-    ] .
 
-# Classe evaluation
-ex:Evaluation a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "EvalCoach"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "EvalInstallation"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "EvalRestauration"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "EvalLocationEquipement"
-    ] .
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Effectuer -->
 
-# Classe notification
-ex:Notification a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "Email"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "InterneApp"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "SMS"
-    ] .
+    <ObjectProperty rdf:about="&ont;Effectuer">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/paiement"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/reservation"/>
+    </ObjectProperty>
+    
 
-# Classe serviceAdditionnel
-ex:ServiceAdditionnel a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "Restauration"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "LocationEquipement"
-    ] .
 
-# Classe supportClient
-ex:SupportClient a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "FAQ"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "ChatDirecte"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "Chatbot"
-    ] .
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Evaluer -->
 
-# Classe Historique
-ex:Historique a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "HistoriqueReservation"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "HistoriquePaiement"
-    ] .
+    <ObjectProperty rdf:about="&ont;Evaluer">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/evaluation"/>
+    </ObjectProperty>
+    
 
-# Classe calendrier
-ex:Calendrier a rdfs:Class ;
-    rdfs:subClassOf [
-        rdf:type rdfs:Class ;
-        rdfs:label "CalendrierUser"
-    ], [
-        rdf:type rdfs:Class ;
-        rdfs:label "CalendrierInstallation"
-    ] .
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Financer -->
+
+    <ObjectProperty rdf:about="&ont;Financer">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/event_sportif"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Gérer -->
+
+    <ObjectProperty rdf:about="&ont;Gérer">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/event_sportif"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Louer -->
+
+    <ObjectProperty rdf:about="&ont;Louer">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/location_equipement"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Participer -->
+
+    <ObjectProperty rdf:about="&ont;Participer">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/event_sportif"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Posseder -->
+
+    <ObjectProperty rdf:about="&ont;Posseder">
+        <rdfs:range rdf:resource="http://example.org/ontology/equipement"/>
+        <rdfs:domain rdf:resource="http://example.org/ontology/installations_sportives"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/salleDeSport"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/terrain"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Reserver -->
+
+    <ObjectProperty rdf:about="&ont;Reserver">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/installations_sportives"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Reçoit -->
+
+    <ObjectProperty rdf:about="&ont;Reçoit">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/notification"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Reçoit_aide -->
+
+    <ObjectProperty rdf:about="&ont;Reçoit_aide">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/supportClient"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#S&apos;inscrire -->
+
+    <ObjectProperty rdf:about="&ont;S&apos;inscrire">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/abonnement"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Utiliser -->
+
+    <ObjectProperty rdf:about="&ont;Utiliser">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:domain rdf:resource="http://example.org/ontology/event_sportif"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/installations_sportives"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/restauration"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#consulte -->
+
+    <ObjectProperty rdf:about="&ont;consulte">
+        <rdfs:range rdf:resource="http://example.org/ontology/calendrier"/>
+        <rdfs:domain rdf:resource="http://example.org/ontology/installations_sportives"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Amount -->
+
+    <DatatypeProperty rdf:about="&ont;Amount">
+        <rdfs:domain rdf:resource="http://example.org/ontology/financement"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Availability -->
+
+    <DatatypeProperty rdf:about="&ont;Availability">
+        <rdfs:domain rdf:resource="http://example.org/ontology/calendrier"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#CalendarType -->
+
+    <DatatypeProperty rdf:about="&ont;CalendarType">
+        <rdfs:domain rdf:resource="http://example.org/ontology/calendrier"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Capacity -->
+
+    <DatatypeProperty rdf:about="&ont;Capacity">
+        <rdfs:domain rdf:resource="http://example.org/ontology/installations_sportives"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Date -->
+
+    <DatatypeProperty rdf:about="&ont;Date">
+        <rdfs:domain rdf:resource="http://example.org/ontology/event_sportif"/>
+        <rdfs:domain rdf:resource="http://example.org/ontology/reservation"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#DonationType -->
+
+    <DatatypeProperty rdf:about="&ont;DonationType">
+        <rdfs:domain rdf:resource="http://example.org/ontology/don"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Duration -->
+
+    <DatatypeProperty rdf:about="&ont;Duration">
+        <rdfs:domain rdf:resource="http://example.org/ontology/abonnement"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Email -->
+
+    <DatatypeProperty rdf:about="&ont;Email">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#EquipmentCount -->
+
+    <DatatypeProperty rdf:about="&ont;EquipmentCount">
+        <rdfs:domain rdf:resource="http://example.org/ontology/installations_sportives"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#EquipmentType -->
+
+    <DatatypeProperty rdf:about="&ont;EquipmentType">
+        <rdfs:domain rdf:resource="http://example.org/ontology/equipement"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Feedback -->
+
+    <DatatypeProperty rdf:about="&ont;Feedback">
+        <rdfs:domain rdf:resource="http://example.org/ontology/evaluation"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Location -->
+
+    <DatatypeProperty rdf:about="&ont;Location">
+        <rdfs:domain rdf:resource="http://example.org/ontology/event_sportif"/>
+        <rdfs:domain rdf:resource="http://example.org/ontology/installations_sportives"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Name -->
+
+    <DatatypeProperty rdf:about="&ont;Name">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:domain rdf:resource="http://example.org/ontology/installations_sportives"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#NotificationPreference -->
+
+    <DatatypeProperty rdf:about="&ont;NotificationPreference">
+        <rdfs:domain rdf:resource="http://example.org/ontology/notification"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#NotificationType -->
+
+    <DatatypeProperty rdf:about="&ont;NotificationType">
+        <rdfs:domain rdf:resource="http://example.org/ontology/notification"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#PaymentHistory -->
+
+    <DatatypeProperty rdf:about="&ont;PaymentHistory">
+        <rdfs:domain rdf:resource="http://example.org/ontology/historique"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#PaymentMethod -->
+
+    <DatatypeProperty rdf:about="&ont;PaymentMethod">
+        <rdfs:domain rdf:resource="http://example.org/ontology/paiement"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#PhoneNumber -->
+
+    <DatatypeProperty rdf:about="&ont;PhoneNumber">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Price -->
+
+    <DatatypeProperty rdf:about="&ont;Price">
+        <rdfs:domain rdf:resource="http://example.org/ontology/tarification"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Rating -->
+
+    <DatatypeProperty rdf:about="&ont;Rating">
+        <rdfs:domain rdf:resource="http://example.org/ontology/evaluation"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#ReservationHistory -->
+
+    <DatatypeProperty rdf:about="&ont;ReservationHistory">
+        <rdfs:domain rdf:resource="http://example.org/ontology/historique"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#ReservationType -->
+
+    <DatatypeProperty rdf:about="&ont;ReservationType">
+        <rdfs:domain rdf:resource="http://example.org/ontology/reservation"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Role -->
+
+    <DatatypeProperty rdf:about="&ont;Role">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#ServicePrice -->
+
+    <DatatypeProperty rdf:about="&ont;ServicePrice">
+        <rdfs:domain rdf:resource="http://example.org/ontology/serviceAdditionnel"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#ServiceType -->
+
+    <DatatypeProperty rdf:about="&ont;ServiceType">
+        <rdfs:domain rdf:resource="http://example.org/ontology/serviceAdditionnel"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#SupportType -->
+
+    <DatatypeProperty rdf:about="&ont;SupportType">
+        <rdfs:domain rdf:resource="http://example.org/ontology/supportClient"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#SurfaceType -->
+
+    <DatatypeProperty rdf:about="&ont;SurfaceType">
+        <rdfs:domain rdf:resource="http://example.org/ontology/terrain"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#TarifType -->
+
+    <DatatypeProperty rdf:about="&ont;TarifType">
+        <rdfs:domain rdf:resource="http://example.org/ontology/tarification"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Time -->
+
+    <DatatypeProperty rdf:about="&ont;Time">
+        <rdfs:domain rdf:resource="http://example.org/ontology/event_sportif"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Value -->
+
+    <DatatypeProperty rdf:about="&ont;Value">
+        <rdfs:domain rdf:resource="http://example.org/ontology/don"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#identifiant -->
+
+    <DatatypeProperty rdf:about="&ont;identifiant">
+        <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#isIndoor -->
+
+    <DatatypeProperty rdf:about="&ont;isIndoor">
+        <rdfs:domain rdf:resource="http://example.org/ontology/terrain"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/ontology/Admin -->
+
+    <Class rdf:about="http://example.org/ontology/Admin">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/Utilisateur"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/ChatDirecte -->
+
+    <Class rdf:about="http://example.org/ontology/ChatDirecte">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/supportClient"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/Chatbot -->
+
+    <Class rdf:about="http://example.org/ontology/Chatbot">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/supportClient"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/Client -->
+
+    <Class rdf:about="http://example.org/ontology/Client">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/Utilisateur"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/Coach -->
+
+    <Class rdf:about="http://example.org/ontology/Coach">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/Utilisateur"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/FAQ -->
+
+    <Class rdf:about="http://example.org/ontology/FAQ">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/supportClient"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/PartenairesSponsors -->
+
+    <Class rdf:about="http://example.org/ontology/PartenairesSponsors">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/Utilisateur"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/Personnel -->
+
+    <Class rdf:about="http://example.org/ontology/Personnel">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/Utilisateur"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/SMS -->
+
+    <Class rdf:about="http://example.org/ontology/SMS">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/notification"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/Utilisateur -->
+
+    <Class rdf:about="http://example.org/ontology/Utilisateur"/>
+    
+
+
+    <!-- http://example.org/ontology/abonnement -->
+
+    <Class rdf:about="http://example.org/ontology/abonnement"/>
+    
+
+
+    <!-- http://example.org/ontology/annuel -->
+
+    <Class rdf:about="http://example.org/ontology/annuel">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/abonnement"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/calendrier -->
+
+    <Class rdf:about="http://example.org/ontology/calendrier"/>
+    
+
+
+    <!-- http://example.org/ontology/calendrierInstallation -->
+
+    <Class rdf:about="http://example.org/ontology/calendrierInstallation">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/calendrier"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/calendrierUser -->
+
+    <Class rdf:about="http://example.org/ontology/calendrierUser">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/calendrier"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/don -->
+
+    <Class rdf:about="http://example.org/ontology/don">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/financement"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/don_equipement -->
+
+    <Class rdf:about="http://example.org/ontology/don_equipement">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/don"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/don_monetaire -->
+
+    <Class rdf:about="http://example.org/ontology/don_monetaire">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/don"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/don_stockRestauration -->
+
+    <Class rdf:about="http://example.org/ontology/don_stockRestauration">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/don"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/email -->
+
+    <Class rdf:about="http://example.org/ontology/email">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/notification"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/equipement -->
+
+    <Class rdf:about="http://example.org/ontology/equipement">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/installations_sportives"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/equipement_sportif -->
+
+    <Class rdf:about="http://example.org/ontology/equipement_sportif">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/equipement"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/equipement_technologique -->
+
+    <Class rdf:about="http://example.org/ontology/equipement_technologique">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/equipement"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/eval_coach -->
+
+    <Class rdf:about="http://example.org/ontology/eval_coach">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/evaluation"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/eval_installation -->
+
+    <Class rdf:about="http://example.org/ontology/eval_installation">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/evaluation"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/eval_location_equipement -->
+
+    <Class rdf:about="http://example.org/ontology/eval_location_equipement">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/evaluation"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/eval_restauration -->
+
+    <Class rdf:about="http://example.org/ontology/eval_restauration">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/evaluation"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/evaluation -->
+
+    <Class rdf:about="http://example.org/ontology/evaluation"/>
+    
+
+
+    <!-- http://example.org/ontology/event_prive -->
+
+    <Class rdf:about="http://example.org/ontology/event_prive">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/event_sportif"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/event_public -->
+
+    <Class rdf:about="http://example.org/ontology/event_public">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/event_sportif"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/event_sportif -->
+
+    <Class rdf:about="http://example.org/ontology/event_sportif"/>
+    
+
+
+    <!-- http://example.org/ontology/financement -->
+
+    <Class rdf:about="http://example.org/ontology/financement"/>
+    
+
+
+    <!-- http://example.org/ontology/historique -->
+
+    <Class rdf:about="http://example.org/ontology/historique"/>
+    
+
+
+    <!-- http://example.org/ontology/historiquePaiement -->
+
+    <Class rdf:about="http://example.org/ontology/historiquePaiement">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/historique"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/historiqueReservation -->
+
+    <Class rdf:about="http://example.org/ontology/historiqueReservation">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/historique"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/installations_sportives -->
+
+    <Class rdf:about="http://example.org/ontology/installations_sportives"/>
+    
+
+
+    <!-- http://example.org/ontology/interneApp -->
+
+    <Class rdf:about="http://example.org/ontology/interneApp">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/notification"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/location_equipement -->
+
+    <Class rdf:about="http://example.org/ontology/location_equipement">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/serviceAdditionnel"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/mensuel -->
+
+    <Class rdf:about="http://example.org/ontology/mensuel">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/abonnement"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/notification -->
+
+    <Class rdf:about="http://example.org/ontology/notification"/>
+    
+
+
+    <!-- http://example.org/ontology/paiement -->
+
+    <Class rdf:about="http://example.org/ontology/paiement">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/financement"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/paiement_enLigne -->
+
+    <Class rdf:about="http://example.org/ontology/paiement_enLigne">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/paiement"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/paiement_espaces -->
+
+    <Class rdf:about="http://example.org/ontology/paiement_espaces">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/paiement"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/reservation -->
+
+    <Class rdf:about="http://example.org/ontology/reservation"/>
+    
+
+
+    <!-- http://example.org/ontology/reservation_coach -->
+
+    <Class rdf:about="http://example.org/ontology/reservation_coach">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/reservation"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/reservation_installation -->
+
+    <Class rdf:about="http://example.org/ontology/reservation_installation">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/reservation"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/reservation_personnel -->
+
+    <Class rdf:about="http://example.org/ontology/reservation_personnel">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/reservation"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/restauration -->
+
+    <Class rdf:about="http://example.org/ontology/restauration">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/serviceAdditionnel"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/salleDeSport -->
+
+    <Class rdf:about="http://example.org/ontology/salleDeSport">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/installations_sportives"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/serviceAdditionnel -->
+
+    <Class rdf:about="http://example.org/ontology/serviceAdditionnel"/>
+    
+
+
+    <!-- http://example.org/ontology/supportClient -->
+
+    <Class rdf:about="http://example.org/ontology/supportClient"/>
+    
+
+
+    <!-- http://example.org/ontology/tarification -->
+
+    <Class rdf:about="http://example.org/ontology/tarification"/>
+    
+
+
+    <!-- http://example.org/ontology/tarification_forfaitaire -->
+
+    <Class rdf:about="http://example.org/ontology/tarification_forfaitaire">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/tarification"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/tarification_horaire -->
+
+    <Class rdf:about="http://example.org/ontology/tarification_horaire">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/tarification"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/terrain -->
+
+    <Class rdf:about="http://example.org/ontology/terrain">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/installations_sportives"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/terrain_indoor -->
+
+    <Class rdf:about="http://example.org/ontology/terrain_indoor">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/terrain"/>
+    </Class>
+    
+
+
+    <!-- http://example.org/ontology/terrain_outdoor -->
+
+    <Class rdf:about="http://example.org/ontology/terrain_outdoor">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/terrain"/>
+    </Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#admin1 -->
+
+    <NamedIndividual rdf:about="&ont;admin1">
+        <rdf:type rdf:resource="http://example.org/ontology/Admin"/>
+        <ont:Email rdf:datatype="&xsd;string">sarra@admin.tn</ont:Email>
+        <ont:Role>Admin</ont:Role>
+        <ont:PhoneNumber>56558402
+</ont:PhoneNumber>
+        <ont:identifiant>1
+</ont:identifiant>
+        <ont:Name>sarra chahab</ont:Name>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#admin2 -->
+
+    <NamedIndividual rdf:about="&ont;admin2">
+        <rdf:type rdf:resource="http://example.org/ontology/Admin"/>
+        <ont:Role>Admin
+</ont:Role>
+        <ont:identifiant>2
+</ont:identifiant>
+        <ont:Name>testing testing</ont:Name>
+        <ont:PhoneNumber>56558401</ont:PhoneNumber>
+        <ont:Email>test@admin.tn
+</ont:Email>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#agentDeMaintenance -->
+
+    <NamedIndividual rdf:about="&ont;agentDeMaintenance">
+        <rdf:type rdf:resource="http://example.org/ontology/Personnel"/>
+        <ont:identifiant>12</ont:identifiant>
+        <ont:Name>agent1</ont:Name>
+        <ont:Email>agent1@personnel.com</ont:Email>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#client1 -->
+
+    <NamedIndividual rdf:about="&ont;client1">
+        <rdf:type rdf:resource="http://example.org/ontology/Client"/>
+        <ont:Email>client1@client.tn
+</ont:Email>
+        <ont:Name>client 1</ont:Name>
+        <ont:identifiant>4</ont:identifiant>
+        <ont:PhoneNumber>22222222</ont:PhoneNumber>
+        <ont:Role>Client
+</ont:Role>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#client2 -->
+
+    <NamedIndividual rdf:about="&ont;client2">
+        <rdf:type rdf:resource="http://example.org/ontology/Client"/>
+        <ont:Role>Client
+</ont:Role>
+        <ont:identifiant>6
+</ont:identifiant>
+        <ont:Name>client 2
+</ont:Name>
+        <ont:PhoneNumber>11224455</ont:PhoneNumber>
+        <ont:Email>client2@client.tn
+</ont:Email>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#client3 -->
+
+    <NamedIndividual rdf:about="&ont;client3">
+        <rdf:type rdf:resource="http://example.org/ontology/Client"/>
+        <ont:PhoneNumber>45884466</ont:PhoneNumber>
+        <ont:identifiant>3
+</ont:identifiant>
+        <ont:Role>Client
+</ont:Role>
+        <ont:Name>client 3
+</ont:Name>
+        <ont:Email>client3@client.tn
+</ont:Email>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#coach1 -->
+
+    <NamedIndividual rdf:about="&ont;coach1">
+        <rdf:type rdf:resource="http://example.org/ontology/Coach"/>
+        <ont:PhoneNumber>11225544</ont:PhoneNumber>
+        <ont:identifiant>5</ont:identifiant>
+        <ont:Role>Coach</ont:Role>
+        <ont:Email>coach@domain.tn
+</ont:Email>
+        <ont:Name>coach1
+</ont:Name>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#coach2 -->
+
+    <NamedIndividual rdf:about="&ont;coach2">
+        <rdf:type rdf:resource="http://example.org/ontology/Coach"/>
+        <ont:Email>coach2@domain.tn
+</ont:Email>
+        <ont:PhoneNumber>33557788</ont:PhoneNumber>
+        <ont:Name>coach2</ont:Name>
+        <ont:Role>Coach</ont:Role>
+        <ont:identifiant>7</ont:identifiant>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#femmeDeMenage -->
+
+    <NamedIndividual rdf:about="&ont;femmeDeMenage">
+        <rdf:type rdf:resource="http://example.org/ontology/Personnel"/>
+        <ont:Name>femme1</ont:Name>
+        <ont:identifiant>11
+</ont:identifiant>
+        <ont:Email>femme_de_menage1@personnel.com</ont:Email>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#forfais_annuel -->
+
+    <NamedIndividual rdf:about="&ont;forfais_annuel">
+        <rdf:type rdf:resource="http://example.org/ontology/tarification_forfaitaire"/>
+        <ont:Price rdf:datatype="&xsd;decimal">1440.0</ont:Price>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#forfait_mois -->
+
+    <NamedIndividual rdf:about="&ont;forfait_mois">
+        <rdf:type rdf:resource="http://example.org/ontology/tarification_forfaitaire"/>
+        <ont:Price rdf:datatype="&xsd;decimal">120.0</ont:Price>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#tarif_heure -->
+
+    <NamedIndividual rdf:about="&ont;tarif_heure">
+        <rdf:type rdf:resource="http://example.org/ontology/tarification_horaire"/>
+        <ont:Price rdf:datatype="&xsd;decimal">30.0</ont:Price>
+    </NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
