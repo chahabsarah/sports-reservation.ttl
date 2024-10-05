@@ -10,6 +10,7 @@
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
 ]>
 
+
 <rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
      xml:base="http://www.w3.org/2002/07/owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -288,6 +289,7 @@
 
     <DatatypeProperty rdf:about="&ont;Name">
         <rdfs:domain rdf:resource="http://example.org/ontology/Utilisateur"/>
+        <rdfs:domain rdf:resource="http://example.org/ontology/event_sportif"/>
         <rdfs:domain rdf:resource="http://example.org/ontology/installations_sportives"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </DatatypeProperty>
@@ -338,6 +340,7 @@
     <!-- http://www.co-ode.org/ontologies/ont.owl#Price -->
 
     <DatatypeProperty rdf:about="&ont;Price">
+        <rdfs:domain rdf:resource="http://example.org/ontology/serviceAdditionnel"/>
         <rdfs:domain rdf:resource="http://example.org/ontology/tarification"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
@@ -428,11 +431,28 @@
     
 
 
+    <!-- http://www.co-ode.org/ontologies/ont.owl#TypeEquipement -->
+
+    <DatatypeProperty rdf:about="&ont;TypeEquipement">
+        <rdfs:domain rdf:resource="http://example.org/ontology/equipement"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
     <!-- http://www.co-ode.org/ontologies/ont.owl#Value -->
 
     <DatatypeProperty rdf:about="&ont;Value">
         <rdfs:domain rdf:resource="http://example.org/ontology/don"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#eventType -->
+
+    <DatatypeProperty rdf:about="&ont;eventType">
+        <rdfs:domain rdf:resource="http://example.org/ontology/event_sportif"/>
     </DatatypeProperty>
     
 
@@ -907,6 +927,24 @@
     
 
 
+    <!-- http://www.co-ode.org/ontologies/ont.owl#additionalservice1 -->
+
+    <NamedIndividual rdf:about="&ont;additionalservice1">
+        <ont:ServicePrice rdf:datatype="&xsd;decimal">20</ont:ServicePrice>
+        <ont:ServiceType rdf:datatype="&xsd;decimal">restauration</ont:ServiceType>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#additionalservice2 -->
+
+    <NamedIndividual rdf:about="&ont;additionalservice2">
+        <ont:ServicePrice rdf:datatype="&xsd;decimal">50</ont:ServicePrice>
+        <ont:ServiceType rdf:datatype="&xsd;decimal">location</ont:ServiceType>
+    </NamedIndividual>
+    
+
+
     <!-- http://www.co-ode.org/ontologies/ont.owl#admin1 -->
 
     <NamedIndividual rdf:about="&ont;admin1">
@@ -1027,6 +1065,34 @@
     
 
 
+    <!-- http://www.co-ode.org/ontologies/ont.owl#equipement1 -->
+
+    <NamedIndividual rdf:about="&ont;equipement1">
+        <ont:EquipmentType>sportif</ont:EquipmentType>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#equipement2 -->
+
+    <NamedIndividual rdf:about="&ont;equipement2">
+        <ont:EquipmentType>technologique</ont:EquipmentType>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#event1 -->
+
+    <NamedIndividual rdf:about="&ont;event1">
+        <ont:Date rdf:datatype="&xsd;dateTime"></ont:Date>
+        <ont:Time rdf:datatype="&xsd;dateTime"></ont:Time>
+        <ont:Location>XY</ont:Location>
+        <ont:Name>example1
+</ont:Name>
+    </NamedIndividual>
+    
+
+
     <!-- http://www.co-ode.org/ontologies/ont.owl#femmeDeMenage -->
 
     <NamedIndividual rdf:about="&ont;femmeDeMenage">
@@ -1057,14 +1123,65 @@
     
 
 
+    <!-- http://www.co-ode.org/ontologies/ont.owl#installsport1 -->
+
+    <NamedIndividual rdf:about="&ont;installsport1">
+        <ont:Availability rdf:datatype="&xsd;boolean">true</ont:Availability>
+        <ont:Capacity>30</ont:Capacity>
+        <ont:Location>Y</ont:Location>
+        <ont:Name>X</ont:Name>
+        <ont:EquipmentCount>5</ont:EquipmentCount>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#installsport2 -->
+
+    <NamedIndividual rdf:about="&ont;installsport2">
+        <ont:EquipmentCount>5</ont:EquipmentCount>
+        <ont:Capacity>10</ont:Capacity>
+        <ont:Location>Ave3</ont:Location>
+        <ont:Availability>false</ont:Availability>
+        <ont:Name>T</ont:Name>
+    </NamedIndividual>
+    
+
+
     <!-- http://www.co-ode.org/ontologies/ont.owl#tarif_heure -->
 
     <NamedIndividual rdf:about="&ont;tarif_heure">
         <rdf:type rdf:resource="http://example.org/ontology/tarification_horaire"/>
         <ont:Price rdf:datatype="&xsd;decimal">30.0</ont:Price>
     </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#terrain1 -->
+
+    <NamedIndividual rdf:about="&ont;terrain1">
+        <ont:isIndoor rdf:datatype="&xsd;boolean">true</ont:isIndoor>
+        <ont:SurfaceType>grass</ont:SurfaceType>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#terrain2 -->
+
+    <NamedIndividual rdf:about="&ont;terrain2">
+        <ont:isIndoor rdf:datatype="&xsd;boolean">false</ont:isIndoor>
+        <ont:SurfaceType>soil</ont:SurfaceType>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#type_event -->
+
+    <NamedIndividual rdf:about="&ont;type_event">
+        <ont:eventType>private</ont:eventType>
+    </NamedIndividual>
 </rdf:RDF>
 
 
 
 <!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
